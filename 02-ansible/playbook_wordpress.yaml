@@ -1,5 +1,5 @@
 ---
-- hosts: sre
+- hosts: wordpress
   become: yes
   remote_user: "{{ admin_user }}"
   vars_files:
