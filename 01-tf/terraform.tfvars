@@ -20,7 +20,7 @@ server_wordpress_key_filename = "wordpress.pem"
 docker_gpg_url                = "https://download.docker.com/linux/ubuntu/gpg"
 docker_repo                   = "deb https://download.docker.com/linux/ubuntu focal stable"
 docker_compose_url            = "https://github.com/docker/compose/releases/download/v2.10.2/docker-compose-linux-x86_64"
-docker_compose_project_path   = "~/digital-product-bootcamp-sre-docker"
+docker_compose_project_path   = "~/digital-product-bootcamp-wordpress-docker"
 project_required_packages     = ["apt-transport-https", "ca-certificates", "curl", "gnupg-agent", "software-properties-common", "python3-pip", "python3-setuptools"]
 docker_packages               = ["docker-ce=5:20.10.21~3-0~ubuntu-focal", "docker-ce-cli=5:20.10.21~3-0~ubuntu-focal", "containerd.io=1.6.9-1"]
 python_docker_modules         = ["docker==6.0.1", "docker-compose==1.29.2"]

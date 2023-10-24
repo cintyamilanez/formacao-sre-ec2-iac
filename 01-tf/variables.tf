@@ -16,10 +16,6 @@ variable "wordpress_port" {
   type = number
 }
 
-variable "blockexplorer_port" {
-  type = number
-}
-
 # Instance Module:
 
 variable "ami_name" {
@@ -91,10 +87,6 @@ variable "python_docker_modules" {
 # Docker Compose Config:
 
 variable "wordpress_image" {
-  type = string
-}
-
-variable "blockexplorer_image" {
   type = string
 }
 

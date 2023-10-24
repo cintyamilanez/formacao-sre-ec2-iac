@@ -27,11 +27,11 @@ resource "aws_security_group" "allow_ssh" {
 
 resource "aws_security_group" "allow_wordpress_port" {
   name        = "allow_wordpress_port"
-  description = "Allow TCP sre inbound traffic"
+  description = "Allow TCP wordpress inbound traffic"
   vpc_id      = data.aws_vpc.wordpress_vpc.id
 
   ingress {
-    description      = "Port for SRE"
+    description      = "Port for wordpress"
     from_port        = var.wordpress_port
     to_port          = var.wordpress_port
     protocol         = "tcp"
