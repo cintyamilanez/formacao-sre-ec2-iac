@@ -90,10 +90,6 @@ variable "wordpress_image" {
   type = string
 }
 
-variable "wordpress_default_balance_ether" {
-  type = string
-}
-
 # Cloudwatch Agent
 
 variable "aggregation_dimensions" {
@@ -116,67 +112,4 @@ variable "disk_resources" {
   description = "Specifies an array of disk mount points. This field limits CloudWatch to collect metrics from only the listed mount points. You can specify * as the value to collect metrics from all mount points. Defaults to the root / mountpount."
   type        = list(any)
   default     = ["/"]
-}
-
-variable "metrics_collection_interval" {
-  description = <<EOF
-  Specifies how often to collect the cpu metrics, overriding the global metrics_collection_interval specified in the agent section of the configuration file. If you set this value below 60 seconds, each metric is collected as a high-resolution metric.
-EOF
-
-  type    = string
-  default = 60
-}
-
-variable "userdata_part_content" {
-  description = "The user data that should be passed along from the caller of the module."
-  type        = string
-  default     = ""
-}
-
-variable "userdata_part_content_type" {
-  description = "What format is userdata_part_content in - eg 'text/cloud-config' or 'text/x-shellscript'."
-  type        = string
-  default     = "text/cloud-config"
-}
-
-variable "userdata_part_merge_type" {
-  description = "Control how cloud-init merges user-data sections."
-  type        = string
-  default     = "list(append)+dict(recurse_array)+str()"
-}
-
-variable "cloudwatch_log_group_agent_name" {
-  description = "Cloudwatch log group for agent"
-  type        = string
-  default     = "amazon_cloudwatch_agent"
-}
-
-variable "cloudwatch_log_group_docker_name" {
-  description = "Cloudwatch log group for docker compose"
-  type        = string
-  default     = "docker_compose"
-}
-
-variable "cloudwatch_log_path_agent" {
-  description = "Cloudwatch log group for agent"
-  type        = string
-  default     = "/opt/aws/amazon-cloudwatch-agent/logs/amazon-cloudwatch-agent.log"
-}
-
-variable "cloudwatch_log_path_docker" {
-  description = "Cloudwatch log group for docker compose"
-  type        = string
-  default     = "/var/lib/docker/containers/**-json.log"
-}
-
-variable "cloudwatch_log_stream_agent_name" {
-  description = "Cloudwatch log group for agent"
-  type        = string
-  default     = "amazon-cloudwatch-agent.log"
-}
-
-variable "cloudwatch_log_stream_docker_name" {
-  description = "Cloudwatch log group for docker compose"
-  type        = string
-  default     = "docker-compose-json.log"
 }

@@ -18,3 +18,9 @@ resource "aws_iam_role" "wordpress_role" {
     ]
   })
 }
+
+resource "aws_iam_policy_attachment" "example" {
+  name       = "wordpress_role-attachment-ssm"
+  policy_arn = "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore"
+  roles      = [aws_iam_role.wordpress_role.name]
+}
