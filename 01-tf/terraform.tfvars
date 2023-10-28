@@ -8,7 +8,7 @@ wordpress_port    = 8080
 # Instance Module:
 ami_name             = ["ubuntu/images/hvm-ssd/ubuntu-jammy-22.04-amd64-server-*"]
 ami_owner            = ["099720109477"] # Ubuntu
-instance_type        = "t3.medium"
+instance_type        = "t3.micro"
 key_name             = "vockey"
 monitoring           = true
 iam_instance_profile = "wordpress_instance_profile"
@@ -26,4 +26,4 @@ docker_packages               = ["docker-ce=5:20.10.21~3-0~ubuntu-focal", "docke
 python_docker_modules         = ["docker==6.0.1", "docker-compose==1.29.2"]
 
 # Docker Compose Config:
-wordpress_image = "wordpress:php8.2-fpm-alpine"
+wordpress_image = "wordpress:latest"

@@ -89,27 +89,3 @@ variable "python_docker_modules" {
 variable "wordpress_image" {
   type = string
 }
-
-# Cloudwatch Agent
-
-variable "aggregation_dimensions" {
-  description = "Specifies the dimensions that collected metrics are to be aggregated on."
-  type        = list(any)
-
-  default = [
-    ["InstanceId"],
-    ["AutoScalingGroupName"],
-  ]
-}
-
-variable "cpu_resources" {
-  description = "Specifies that per-cpu metrics are to be collected. The only allowed value is *. If you include this field and value, per-cpu metrics are collected."
-  type        = string
-  default     = "\"resources\": [\"*\"],"
-}
-
-variable "disk_resources" {
-  description = "Specifies an array of disk mount points. This field limits CloudWatch to collect metrics from only the listed mount points. You can specify * as the value to collect metrics from all mount points. Defaults to the root / mountpount."
-  type        = list(any)
-  default     = ["/"]
-}

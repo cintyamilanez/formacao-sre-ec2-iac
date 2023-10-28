@@ -50,9 +50,14 @@ resource "local_file" "ansible_docker_compose" {
   services:
     wordpress:
       image: '${var.wordpress_image}'
-      restart: always
+      restart: unless-stopped
       ports:
         - ${var.wordpress_port}:80
+      environment:
+        - WORDPRESS_DB_HOST=${data.aws_ssm_parameter.wp_db_url.value}:3306
+        - WORDPRESS_DB_USER=admin
+        - WORDPRESS_DB_PASSWORD=${data.aws_secretsmanager_secret_version.wp_password_secret_version.secret_string}
+        - WORDPRESS_DB_NAME=wordpress
       container_name: 'wordpress'
   EOF
 }
