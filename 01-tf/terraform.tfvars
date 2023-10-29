@@ -4,18 +4,17 @@ vpc_public_subnet = ["10.0.101.0/24"]
 sg_cidr_blocks    = ["0.0.0.0/0"]
 
 # Instance Module:
-ami_name                                = ["ubuntu/images/hvm-ssd/ubuntu-jammy-22.04-amd64-server-*"]
-ami_owner                               = ["099720109477"] # Ubuntu
-instance_type                           = "t3.micro"
-key_name                                = "vockey"
-monitoring                              = true
-iam_instance_profile                    = "wordpress_instance_profile"
-iam_role                                = "wordpress_role"
-prometheus_node_exporter_version        = "1.6.1"
-prometheus_node_exporter_port           = 9100
-prometheus_node_exporter_telemetry_path = "/metrics"
-wordpress_port                          = 8080
-wordpress_db_port                       = 3306
+ami_name             = ["ubuntu/images/hvm-ssd/ubuntu-jammy-22.04-amd64-server-*"]
+ami_owner            = ["099720109477"] # Ubuntu
+instance_type        = "t3.micro"
+key_name             = "wordpress_key"
+monitoring           = true
+iam_instance_profile = "wordpress_instance_profile"
+iam_role             = "wordpress_role"
+prometheus_version   = "2.47.2"
+prometheus_port      = 9090
+wordpress_port       = 80
+wordpress_db_port    = 3306
 
 # Ansible Config:
 admin_user                    = "ubuntu"

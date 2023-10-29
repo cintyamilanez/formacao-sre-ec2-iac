@@ -5,9 +5,9 @@
   vars_files:
     - ./vars-default.yaml
 
-  # Install Prometheus node_exporter
+  # Install Prometheus
   roles:
-    - prometheus.prometheus.node_exporter
+    - prometheus.prometheus.prometheus
 
   tasks:
 
