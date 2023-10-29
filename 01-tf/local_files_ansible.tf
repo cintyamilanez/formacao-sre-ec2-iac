@@ -25,6 +25,10 @@ resource "local_file" "ansible_vars_default" {
   - ${packages}
   %{endfor~}
 
+  node_exporter_version: "${var.prometheus_node_exporter_version}"
+  node_exporter_web_listen_address: "0.0.0.0:${var.prometheus_node_exporter_port}"
+  node_exporter_web_telemetry_path: "${var.prometheus_node_exporter_telemetry_path}"
+
   docker_gpg_url: ${var.docker_gpg_url}
   docker_repo: ${var.docker_repo}
   docker_packages:

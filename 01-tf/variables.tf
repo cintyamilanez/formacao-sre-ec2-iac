@@ -12,7 +12,23 @@ variable "sg_cidr_blocks" {
   type = list(string)
 }
 
+variable "prometheus_node_exporter_version" {
+  type = string
+}
+
+variable "prometheus_node_exporter_port" {
+  type = number
+}
+
+variable "prometheus_node_exporter_telemetry_path" {
+  type = string
+}
+
 variable "wordpress_port" {
+  type = number
+}
+
+variable "wordpress_db_port" {
   type = number
 }
 

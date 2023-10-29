@@ -5,13 +5,20 @@
   vars_files:
     - ./vars-default.yaml
 
+  # Install Prometheus node_exporter
+  roles:
+    - prometheus.prometheus.node_exporter
+
   tasks:
+
+    # Setup
     - name: Install aptitude using apt
       apt: name=aptitude state=latest update_cache=yes force_apt_get=yes
 
     - name: Install required system packages for project
       apt: name={{ project_required_packages }} state=latest update_cache=yes
 
+    # Install Docker
     - name: Add Docker GPG key
       apt_key:
         url: "{{ docker_gpg_url }}"

@@ -8,6 +8,7 @@ docker-compose.yml
 *.retry
 hosts
 vars-default.yaml
+roles/node-exporter/
 
 ### Terraform ###
 # Local .terraform directories

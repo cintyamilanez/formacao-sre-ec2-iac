@@ -25,7 +25,26 @@ resource "aws_security_group" "allow_ssh" {
   }
 }
 
-resource "aws_security_group" "allow_wordpress_port" {
+resource "aws_security_group" "allow_prometheus_node_exporter_port" {
+  name        = "allow_prometheus_node_exporter_port"
+  description = "Allow TCP Prometheus node_exporter inbound traffic"
+  vpc_id      = data.aws_vpc.wordpress_vpc.id
+
+  ingress {
+    description      = "Port for prometheus node_exporter"
+    from_port        = var.prometheus_node_exporter_port
+    to_port          = var.prometheus_node_exporter_port
+    protocol         = "tcp"
+    cidr_blocks      = var.sg_cidr_blocks
+    ipv6_cidr_blocks = ["::/0"]
+  }
+
+  tags = {
+    Name = "allow_prometheus_node_exporter_port"
+  }
+}
+
+resource "aws_security_group" "allow_wordpress_ports" {
   name        = "allow_wordpress_port"
   description = "Allow TCP wordpress inbound traffic"
   vpc_id      = data.aws_vpc.wordpress_vpc.id
@@ -40,8 +59,8 @@ resource "aws_security_group" "allow_wordpress_port" {
   }
 
   egress {
-    from_port        = 3306
-    to_port          = 3306
+    from_port        = var.wordpress_db_port
+    to_port          = var.wordpress_db_port
     protocol         = "tcp"
     cidr_blocks      = var.sg_cidr_blocks
     ipv6_cidr_blocks = ["::/0"]
