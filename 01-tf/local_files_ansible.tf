@@ -26,7 +26,7 @@ resource "local_file" "ansible_vars_default" {
   %{endfor~}
 
   prometheus_version: "${var.prometheus_version}"
-  prometheus_web_listen_address: "0.0.0.0:${var.prometheus_port}"}"  
+  prometheus_web_listen_address: "0.0.0.0:${var.prometheus_port}"
 
   docker_gpg_url: ${var.docker_gpg_url}
   docker_repo: ${var.docker_repo}
@@ -57,10 +57,10 @@ resource "local_file" "ansible_docker_compose" {
       ports:
         - ${var.wordpress_port}:80
       environment:
-        - WORDPRESS_DB_HOST=${data.aws_ssm_parameter.wp_db_url.value}:3306
-        - WORDPRESS_DB_USER=admin
+        - WORDPRESS_DB_HOST=${data.aws_ssm_parameter.wp_db_url.value}:${var.wordpress_db_port}
+        - WORDPRESS_DB_USER=${var.wordpress_db_user}
         - WORDPRESS_DB_PASSWORD=${data.aws_secretsmanager_secret_version.wp_password_secret_version.secret_string}
-        - WORDPRESS_DB_NAME=wordpress
+        - WORDPRESS_DB_NAME=${var.wordpress_db_name}
       container_name: 'wordpress'
   EOF
 }

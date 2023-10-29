@@ -15,6 +15,9 @@ prometheus_version   = "2.47.2"
 prometheus_port      = 9090
 wordpress_port       = 80
 wordpress_db_port    = 3306
+wordpress_db_user    = "admin"
+wordpress_db_name    = "wordpress"
+
 
 # Ansible Config:
 admin_user                    = "ubuntu"

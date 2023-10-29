@@ -24,6 +24,14 @@ variable "wordpress_port" {
   type = number
 }
 
+variable "wordpress_db_user" {
+  type = string
+}
+
+variable "wordpress_db_name" {
+  type = string
+}
+
 variable "wordpress_db_port" {
   type = number
 }

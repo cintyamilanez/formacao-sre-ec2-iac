@@ -7,10 +7,9 @@ module "wordpress_ec2_instance" {
   instance_type          = var.instance_type
   key_name               = aws_key_pair.server.key_name
   monitoring             = var.monitoring
-  vpc_security_group_ids = [aws_security_group.allow_ssh.id, aws_security_group.allow_prometheus_node_exporter_port.id, aws_security_group.allow_wordpress_ports.id]
+  vpc_security_group_ids = [aws_security_group.allow_ssh.id, aws_security_group.allow_prometheus_port.id, aws_security_group.allow_wordpress_ports.id]
   subnet_id              = data.aws_subnet.wordpress_public_subnet.id
   iam_instance_profile   = var.iam_instance_profile
-  #user_data              = data.template_file.user_data_file.rendered
 
   tags = {
     Terraform = "true"
